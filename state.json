@@ -4,6 +4,16 @@
             "question": "Python의 창시자는?",
             "choices": ["Guido", "Linus", "Bjarne", "James"],
             "answer": 1
+        },
+        {
+            "question": "마블 시네마틱 유니버스에서 타노스가 모은 인피니티 스톤의 개수는?",
+            "choices": ["4개", "5개", "6개", "7개"],
+            "answer": 3
+        },
+        {
+            "question": "영화 '기생충'의 감독은?",
+            "choices": ["박찬욱", "봉준호", "김기덕", "이창동"],
+            "answer": 2
         }
     ]
 }

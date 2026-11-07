@@ -1,4 +1,10 @@
-#include random
+import random
+import json
+
+with open('state.json', 'r', encoding='utf-8') as f:
+    data = json.load(f)
+
+#print(data)
 
 #퀴즈프로그램 만들기 시작하기
 print("="*50)
@@ -11,7 +17,7 @@ if choose == 1 :
     print("퀴즈를 시작합니다! (총 5문제)")
     print("-"*30)
     print("[문제1]")
-    print("마블 시네마틱 유니버스에서 타노스가 모은 인피니티 스톤의 개수는?")
+    print("질문")
     print("""
         1. 4개
         2. 5개

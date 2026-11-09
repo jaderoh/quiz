@@ -17,7 +17,7 @@ while choose == 1 and answer!= "q" :
     print("퀴즈를 시작합니다! (총 5문제)")
     print("-"*30)
     q = random.randrange(0,3)
-    print("[문제1]")
+    print("[문제"+str(q+1)+"]")
     print(data["quizzes"][q]["question"])
     for i in range(4):
         print(str(i+1)+".", data["quizzes"][q]["choices"][i])

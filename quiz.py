@@ -65,6 +65,7 @@ class QuizGame:
         else:
             print("없는 번호입니다.")
 
+    #Json Score
     def load_high_score(self):
         try:
             with open(SCORE_FILE, "r", encoding="utf-8") as f:
@@ -130,4 +131,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-#Json Score
+

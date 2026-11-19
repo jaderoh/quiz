@@ -1,7 +1,7 @@
 import json
 
 FILENAME = "quizzes.json"
-
+SCORE_FILE = "score.json"
 
 class Quiz:
     def __init__(self, question, answer):
@@ -65,6 +65,17 @@ class QuizGame:
         else:
             print("없는 번호입니다.")
 
+    def load_high_score(self):
+        try:
+            with open(SCORE_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)["best"]
+        except (FileNotFoundError, json.JSONDecodeError, KeyError):
+            return 0
+
+    def save_high_score(self, best):
+        with open(SCORE_FILE, "w", encoding="utf-8") as f:
+            json.dump({"best": best}, f)
+
     def play_quiz(self):
         if not self.quizzes:
             print("먼저 퀴즈를 등록해주세요.")
@@ -79,6 +90,13 @@ class QuizGame:
                 print("오답! 정답은", quiz.answer)
         percent = score / len(self.quizzes) * 100
         print(f"\n결과: {score}/{len(self.quizzes)} ({percent:.0f}점)")
+
+        best = self.load_high_score()
+        if percent > best:
+            self.save_high_score(round(percent))
+            print("신기록입니다!")
+        else:
+            print(f"최고 점수: {best}점")
 
     def run(self):
         while True:
@@ -99,4 +117,17 @@ class QuizGame:
                 print("1~5 중에서 선택해주세요.")
 
 
-QuizGame().run()
+def main():
+    game = QuizGame()
+    try:
+        game.run()
+    except KeyboardInterrupt:  # Ctrl+C
+        print("\n\n중단 요청을 받아 프로그램을 종료합니다.")
+    except EOFError:  # 입력 스트림 종료
+        print("\n\n입력이 종료되어 프로그램을 종료합니다.")
+
+
+if __name__ == "__main__":
+    main()
+
+#Json Score
